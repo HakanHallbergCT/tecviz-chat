@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { startWebsocketConnection } from './websocket';
+ 
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,5 +18,13 @@ ReactDOM.render(
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 startWebsocketConnection();
+
+const query = new URLSearchParams(window.location.search);
+const test = query.get('test');
+const id = query.get('id');
+
+window.username = id;
+
+if(test) window.textbar.startTestHandler(id);
 
 //Created by Håkan Hallberg for Creative Technology

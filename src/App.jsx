@@ -8,12 +8,14 @@ import { send, registerOnMessageCallback } from './websocket';
 class App extends React.Component {
   state = {
     messages: [],
-    username: null,
+    //username: null,
+    username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) //for generating random "users"
   }
   
   constructor (props) {
     super(props)
     registerOnMessageCallback(this.onMessageReceived.bind(this))
+    window.username = '';
   }
 
   onMessageReceived (msg) {
@@ -33,12 +35,14 @@ class App extends React.Component {
     const hours = new Date().getHours();
     const minutes = new Date().getMinutes();
     const time = hours + ':' + minutes;
+    let testText = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     const message = {
       time: time,
       username: this.state.username,
-      text: text
+      text: testText,  //For generating random test strings
+     // text: text
     }
-
+  
     send(JSON.stringify(message));
    
   }
