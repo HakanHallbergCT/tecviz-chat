@@ -8,8 +8,8 @@ import { send, registerOnMessageCallback } from './websocket';
 class App extends React.Component {
   state = {
     messages: [],
-    //username: null,
-    username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) //for generating random "users"
+    username: null,
+    //username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) //for generating random "users"
   }
   
   constructor (props) {
@@ -35,21 +35,21 @@ class App extends React.Component {
     const hours = new Date().getHours();
     const minutes = new Date().getMinutes();
     const time = hours + ':' + minutes;
-    let testText = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+    //let testText = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     const message = {
       time: time,
       username: this.state.username,
-      text: testText,  //For generating random test strings
-     // text: text
+     // text: testText,  //For generating random test strings
+      text: text
     }
   
     send(JSON.stringify(message));
    
-  }
+  };
 
   render () {
-    const setUserName = this.setUserName.bind(this)
-    const sendMessage = this.sendMessage.bind(this)
+    const setUserName = this.setUserName.bind(this);
+    const sendMessage = this.sendMessage.bind(this);
 
     if (this.state.username === null) {
       return (
@@ -57,16 +57,16 @@ class App extends React.Component {
           <div className='container-title'>Enter username</div>
           <TextBar onSend={setUserName} />
         </div>
-      )
-    }
+      );
+    };
     return (
       <div className='container'>
         <div className='container-title'>TecViz Chat</div>
         <MessageWindow messages={this.state.messages} username={this.state.username} />
         <TextBar onSend={sendMessage} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default App
