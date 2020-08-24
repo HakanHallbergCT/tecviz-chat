@@ -6,6 +6,17 @@ export default class TextBar extends Component {
     super(props)
     this.input = React.createRef()
   }
+
+  state = {
+    input: ''
+  }
+
+  messageButtonHandler = (e) => {
+    this.setState({
+      input:e.target.value
+    })
+  }
+
   sendMessage () {
     this.props.onSend && this.props.onSend(this.input.current.value)
     this.input.current.value = ''
@@ -22,7 +33,7 @@ export default class TextBar extends Component {
     return (
       <div className='textbar'>
         <input className='textbar-input' type='text' ref={this.input} onKeyDown={sendMessageIfEnter} />
-        <button className='textbar-send' onClick={sendMessage}>
+        <button disabled={this.state.input.length<1} className='textbar-send' onClick={sendMessage}>
           Send
         </button>
       </div>
