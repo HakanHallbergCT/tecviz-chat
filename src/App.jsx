@@ -9,7 +9,6 @@ class App extends React.Component {
   state = {
     messages: [],
     username: null,
-    //username: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5) //for generating random "users"
   }
   
   constructor (props) {

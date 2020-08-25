@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chat Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div id="link-template">
+            <a href="http://localhost:3000/?test=true&id=_id_" target="_blank" >Chat _id_</a>
+        </div>
+        <div>
+            <input id="numberOfLinks" type="number" placeholder="Number of links" />
+            <button onclick="getLinks()">Generate links</button>
+        </div>      
+        <div id="links">
+        </div>
+        
+        <script>
+            function createLinks(numberOfLinks) {
+                var template = document.getElementById("link-template")          
+                var links = document.getElementById("links")
+                for (i = 0; i < numberOfLinks; i++) {
+                    var link = template.cloneNode(true)
+                    link.innerHTML = link.innerHTML.replace(/_id_/g, i);
+                    links.appendChild(link);
+                }
+            }
+
+            function getLinks() {
+               var numberOfLinks = document.getElementById("numberOfLinks").value
+               createLinks(numberOfLinks);
+            }
+        </script>
+    </body>
+</html>
