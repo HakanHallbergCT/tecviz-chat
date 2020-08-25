@@ -9,8 +9,8 @@ export default class TextBar extends Component {
   };
 
   sendMessage () {
-    this.props.onSend && this.props.onSend(this.input.current.value);
-    this.input.current.value = '';
+    this.props.onSend && this.props.onSend(this.input.current.value)
+    this.input.current.value = 'tst'
   };
   
   sendMessageIfEnter (e) {
@@ -24,7 +24,8 @@ export default class TextBar extends Component {
      var _interval;
      if(!_interval) {
       _interval = setInterval(() => {
-        this.sendMessage()
+        //this.sendMessage()
+        document.getElementById('TestButton').click();
       }, 5000);   
       return clearInterval();
     }
@@ -40,7 +41,7 @@ export default class TextBar extends Component {
                type='text' 
                ref={this.input} 
                onKeyDown={sendMessageIfEnter} />
-        <button className='textbar-send' 
+        <button className='textbar-send' id="TestButton"
                 onClick={sendMessage} >
           Send
         </button>
