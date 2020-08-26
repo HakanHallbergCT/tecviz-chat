@@ -34,12 +34,12 @@ class App extends React.Component {
     const hours = new Date().getHours();
     const minutes = new Date().getMinutes();
     const time = hours + ':' + minutes;
-    const testText = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+    //const testText = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
     const message = {
       time: time,
       username: this.state.username  || window.username,
-     text: testText  //For generating random test strings
-     // text: text
+   //  text: testText  //For generating random test strings
+      text: text
     }
   
     send(JSON.stringify(message));
